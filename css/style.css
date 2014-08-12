@@ -11,6 +11,7 @@
 }
 
 body {
+	background-color:#333;
 	font-family:"Georgia", serif;
 }
 
@@ -46,11 +47,6 @@ span.tip { color:#6094ff; }
 	width:100%;
 	min-height:100%;
 	
-	background-color:#333;
-	background-image:url(../img/bg.jpg);
-	background-size:100% 100%;
-	background-position:center;
-	
 	-webkit-user-select:none;
 	-khtml-user-select:none;
 	-moz-user-select:none;
@@ -59,19 +55,6 @@ span.tip { color:#6094ff; }
 	user-select:none;
 }
 
-#header {
-	width:990px;
-	height:100px;
-	padding-top:45px;
-	margin:0px auto;
-}
-
-#logo {
-	width:252px;
-	height:45px;
-	background-image:url(../img/logo.png);
-	text-indent:-9999px;
-}
 
 #dungeon-clicker {
 	position:relative;
@@ -80,30 +63,6 @@ span.tip { color:#6094ff; }
 	margin:0px auto;
 	overflow:hidden;
 	cursor:default;
-}
-
-
-#footer {
-	width:990px;
-	height:80px;
-	margin:0px auto;
-	padding-top:20px;
-	color:#777;
-	font-size:11px;
-	line-height:150%;
-	text-align:right;
-}
-
-#footer a {
-	color:#5a4a6d;
-}
-
-#footer a:hover {
-	color:white;
-}
-
-#footer .note {
-	color:#444;
 }
 
 /* BGs */
@@ -276,6 +235,35 @@ span.tip { color:#6094ff; }
 #log-gui .mCSB_scrollTools { opacity:0; }
 #log-gui:hover .mCSB_scrollTools { opacity:1; }
 
+/* ABOUT GUI */
+
+#about {
+	position:absolute;
+	right:15px;
+	bottom:15px;
+	font-size:12px;
+	line-height:18px;
+	text-align:right;
+	color:#669;
+	
+	-webkit-transition:opacity 0.6s;
+	-moz-transition:opacity 0.6s;
+	-o-transition:opacity 0.6s;
+	transition:opacity 0.6s;
+}
+
+#about p {
+	opacity:0.7;
+}
+
+#about a {
+	color:#5a4a6d;
+}
+
+#about a:hover {
+	color:white;
+}
+
 /* MENU */
 
 #menu {
@@ -352,7 +340,7 @@ span.tip { color:#6094ff; }
 	position:absolute;
 	right:15px;
 	bottom:15px;
-	width:24%;
+	width:30%;
 	padding:15px;
 	background-color:rgba(0,0,0,0.4);
 	

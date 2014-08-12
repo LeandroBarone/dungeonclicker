@@ -121,8 +121,10 @@ $(function() {
 function showTooltip(tooltip) {
 	$("#tooltip").html(tooltip);
 	$("#tooltip").css("opacity", 1);
+	$("#about").css("opacity", 0);
 }
 
 function hideTooltip() {
 	$("#tooltip").css("opacity", 0);
+	$("#about").css("opacity", 1);
 }

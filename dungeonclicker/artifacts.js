@@ -79,6 +79,8 @@ function initArtifactsPanel() {
 	}
 	$("#artifacts").append("<div class='cb'></div>");
 	$("#artifacts").mCustomScrollbar();
+	
+	updateArtifacts();
 
 	// Buy artifact
 	$(document).on("click", "#artifacts .available", function() {

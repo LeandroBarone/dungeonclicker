@@ -58,6 +58,8 @@ function initBuildingsPanel() {
 	}
 	$("#buildings").append("<div class='cb'></div>");
 	$("#buildings").mCustomScrollbar();
+	
+	updateBuildings();
 
 	// Buy building
 	$(document).on("click", "#buildings .available", function() {

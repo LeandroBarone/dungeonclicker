@@ -116,8 +116,8 @@ $(function() {
 	// Resize code
 	$(window).resize(function() {
 		// Window
-		var w = $(window).width() - $("#footer").outerHeight() * 2;
-		var h = $(window).height() - ($("#header").outerHeight() + $("#footer").outerHeight());
+		var w = $(window).width();
+		var h = $(window).height();
 		if (h < 350) h = 350;
 		if (w < 600) w = 600;
 		$("#dungeon-clicker, #header, #footer").width(w);
