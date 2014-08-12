@@ -8,7 +8,7 @@ var showBGHandle;
 
 function initAdventurePanel() {
 	$("#btnAdventure").hover(function() {
-		if (dC["options"]["VFX"] == false) return;
+		if (dC["options"]["ShowAdventureLight"] == false) return;
 		$("#light").css("opacity", 1);
 	}, function() {
 		$("#light").css("opacity", 0);

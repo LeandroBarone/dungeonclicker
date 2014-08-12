@@ -76,6 +76,9 @@ $(function() {
 	var dCc = $.jStorage.get("dC", "undefined");
 	if (dCc != "undefined") {
 		dC = dCc;
+		if (typeof dC["options"]["RotateAdventureLight"] == "undefined") dC["options"]["RotateAdventureLight"] = true;
+		if (typeof dC["options"]["ShowAdventureLight"] == "undefined") dC["options"]["ShowAdventureLight"] = true;
+		if (typeof dC["options"]["ShowTransitions"] == "undefined") dC["options"]["ShowTransitions"] = true;
 	}
 	
 	// Save settings each 30 secs

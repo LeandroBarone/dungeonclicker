@@ -19,7 +19,7 @@ $(function() {
 });
 
 function whiteTransition() {
-	if (dC["options"]["VFX"] == false) return;
+	if (dC["options"]["ShowTransitions"] == false) return;
 	$("#white-transition").css("opacity", 1);
 	$("#white-transition").stop().animate({"opacity":0},300);
 }

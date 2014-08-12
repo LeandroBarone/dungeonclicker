@@ -1,5 +1,7 @@
 dC["options"] = new Object();
-dC["options"]["VFX"] = true;
+dC["options"]["ShowAdventureLight"] = true;
+dC["options"]["RotateAdventureLight"] = true;
+dC["options"]["ShowTransitions"] = true;
 dC["options"]["Particles"] = true;
 dC["options"]["AdditionalParticles"] = true;
 dC["options"]["SFX"] = true;
@@ -10,10 +12,13 @@ function initOptionsPanel() {
 	for (var key in dC["options"]) {
 		if (dC["options"][key]) $("#chk" + key).attr("checked", "checked");
 	}
+	
+	updateOptions();
 
 	$(".options-checkbox").change(function() {
 		var key = $(this).attr("data-key");
 		dC["options"][key] = $(this).is(":checked");
+		updateOptions();
 	});
 	
 	$("#btnSave").click(function() {
@@ -29,6 +34,15 @@ function initOptionsPanel() {
 		$.jStorage.deleteKey("dC");
 		window.location.reload();
 	});
+}
+
+function updateOptions() {
+	if (dC["options"]["RotateAdventureLight"] == true) {
+		$("#light").addClass("rotate");
+	}
+	else {
+		$("#light").removeClass("rotate");
+	}
 }
 
 function showOptionsPanel() {

@@ -114,7 +114,9 @@ span.tip { color:#6094ff; }
 	-moz-transition:opacity 1s;
 	-o-transition:opacity 1s;
 	transition:opacity 1s;
+}
 
+#light.rotate {
 	-webkit-animation-name:rotateThis;
 	-webkit-animation-duration:8s;
 	-webkit-animation-iteration-count:infinite;
