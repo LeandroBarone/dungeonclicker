@@ -314,6 +314,8 @@ function updateIncome() {
 	}
 	
 	if (hasBuff("Alchemist's Kit")) income = addNumbers(income, 100);
+	if (hasBuff("Philosophic Mercury")) income = addNumbers(income, 100000);
+	if (hasBuff("Philosopher's Stone")) income = addNumbers(income, 100000000);
 	
 	if (income == "") return;
 	
