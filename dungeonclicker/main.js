@@ -33,6 +33,7 @@ var dC = new Object();
 var dCi = new Object();
 dCi["version"] = "8";
 dCi["updated"] = "Aug 12, 2014";
+dCi["changes"] = "First public release. Full screen enabled. Philosophic Mercury and Philosopher's Stone fixed.";
 dCi["quote"] = "\"Immortality is a long shot, I admit. But somebody has to be first\".<br />&mdash; Bill Cosby";
 dC["v"] = dCi["version"]; // Game version
 
@@ -67,6 +68,7 @@ var buffs = new Object();
 
 // Panels
 var activePanel = "";
+var unlockPanelIsHidden = false;
 
 // Keys
 var receivingKeys = true;
@@ -110,6 +112,7 @@ $(function() {
 		$("#loading").remove();
 		toLog("Welcome to <span class='gamename'>Dungeon Clicker</span> v" + dCi["version"] + "!");
 		toLog("<span class='unimportant'>Updated: " + dCi["updated"]) + "</span>";
+		toLog("<span class='unimportant'>" + dCi["changes"]) + "</span>";
 	});
 	
 	$("#menu .button").mouseup(function() {
@@ -293,7 +296,9 @@ function unlockPanels() {
 		}
 	}
 	
-	if (label == "") {
+	if (label == "" && unlockPanelIsHidden != true) {
+		console.log(label);
+		unlockPanelIsHidden = true;
 		$("#unlock-gui").remove();
 		$(window).resize();
 	}
