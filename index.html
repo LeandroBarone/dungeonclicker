@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="author" content="Leandro Barone - http://www.leandrobarone.com.ar" />
+		<link rel="icon" type="image/x-icon" href="favicon.png" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<title>Dungeon Clicker</title>
+		
+		<!-- jQuery and addons -->
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.json.min.js"></script>
+		<script type="text/javascript" src="js/jstorage.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/jquery.mCustomScrollbar.css" />
+		<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+		
+		<!-- Game files -->
+		<script type="text/javascript" src="dungeonclicker/main.js"></script>
+		<script type="text/javascript" src="dungeonclicker/math.js"></script>
+		<script type="text/javascript" src="dungeonclicker/cheats.js"></script>
+		<script type="text/javascript" src="dungeonclicker/focus.js"></script>
+		<script type="text/javascript" src="dungeonclicker/log.js"></script>
+		<script type="text/javascript" src="dungeonclicker/tooltips.js"></script>
+		<script type="text/javascript" src="dungeonclicker/sfx.js"></script>
+		<script type="text/javascript" src="dungeonclicker/vfx.js"></script>
+		<script type="text/javascript" src="dungeonclicker/dictionaries.js"></script>
+		<script type="text/javascript" src="dungeonclicker/adventure.js"></script>
+		<script type="text/javascript" src="dungeonclicker/buildings.js"></script>
+		<script type="text/javascript" src="dungeonclicker/artifacts.js"></script>
+		<script type="text/javascript" src="dungeonclicker/options.js"></script>
+	</head>
+	<body>
+		<div id="loading"></div>
+		<div id="main-container">
+			<div id="header"><h1 id="logo">Dungeon Clicker</h1></div>
+			<div id="dungeon-clicker">
+				<!-- BGs -->
+				<div id="bg-texture"></div>
+				<div id="shadow-top"></div>
+				<div id="shadow-bottom"></div>
+				
+				<!-- Adventure panel -->
+				<div id="panel-Adventure" class="panel" style="display:none;">
+					<!-- <div id="bg-animation"></div> -->
+					<div id="light" style="opacity:0;"></div>
+					<div id="btnAdventure"></div>
+				</div>
+				
+				<!-- Buildings panel -->
+				<div id="panel-Buildings" class="panel" style="display:none;">
+					<div id="buildings" class="dcframe">
+						<div id="building-list"></div>
+					</div>
+				</div>
+				
+				<!-- Artifacts panel -->
+				<div id="panel-Artifacts" class="panel" style="display:none;">
+					<div id="artifacts" class="dcframe">
+						<div id="artifact-list"></div>
+					</div>
+				</div>
+				<!-- Options panel -->
+				<div id="panel-Options" class="panel" style="display:none;">
+					<div id="options" class="dcframe">
+						<h1>General options</h1>
+						<p class="form-line"><input type="checkbox" id="chkVFX" class="options-checkbox" data-key="VFX" /> <label for="chkVFX">Show advanced visual effects (adventure button glow, panel transitions)</label></p>
+						<p class="form-line"><input type="checkbox" id="chkParticles" class="options-checkbox" data-key="Particles" /> <label for="chkParticles">Show particles (jumping gold coins)</label></p>
+						<p class="form-line"><input type="checkbox" id="chkAdditionalParticles" class="options-checkbox" data-key="AdditionalParticles" /> <label for="chkAdditionalParticles">Show additional particles (used by the Golden Rose Clover. VERY CPU intensive!)</label></p>
+						<p class="form-line"><input type="checkbox" id="chkSFX" class="options-checkbox" data-key="SFX" /> <label for="chkSFX">Play sound effects</label></p>
+						<h1>Save</h1>
+						<p><input type="button" id="btnSave" value="Save game" /> <input type="button" id="btnReset" value="Reset game" /></p>
+						<h1>Disclaimer</h1>
+						<p>This game is in ALPHA. This means that your advance will most likely be reset in future updates.</p>
+					</div>
+				</div>
+				
+				<!-- GUI -->
+				<div id="particles" class="no-events"></div>
+				<div id="tooltip" style="opacity:0;"></div>
+				<div id="coin-gui"><span id="coin-quantity">0</span></div>
+				<div id="unlock-gui"></div>
+				<div id="log-gui">
+					<div id="log-padding">
+						<div id="log-lines">
+						</div>
+					</div>
+				</div>
+				<div id="menu">
+					<div id="btnMenuAdventure" class="button" data-key="Adventure"><div class="fg">Adventure</div></div>
+					<div id="btnMenuBuildings" class="button" data-key="Buildings" style="display:none;"><div class="fg">Buildings</div><div class="notification" style="display:none;"></div></div>
+					<div id="btnMenuArtifacts" class="button" data-key="Artifacts" style="display:none;"><div class="fg">Artifacts</div><div class="notification" style="display:none;"></div></div>
+					<div id="btnMenuOptions" class="button" data-key="Options"><div class="fg">Options</div></div>
+				</div>
+				<div id="white-transition" class="no-events"></div>
+			</div>
+			<footer id="footer">
+				Developed by <a href="http://www.leandrobarone.com.ar" target="_blank">Leandro Barone</a>.<br />
+				Visit the <a href="http://dungeonclickerdev.tumblr.com" target="_bank">Dev Blog</a>.
+			</footer>
+		</div>
+	</body>
+</html>
+<?php	exit; ?>
