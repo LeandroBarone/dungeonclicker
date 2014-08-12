@@ -21,7 +21,7 @@ em {
 
 span.symbol { color:#8b7115; }
 span.tip { color:#6094ff; }
-span.coin, span.gamename { color:#efc120 }
+span.coin, span.gamename { color:#efc120; }
 span.xp { color:#00ff00; }
 span.heroic { color:#6094ff; }
 span.notification { color:#ff64ff; }
@@ -593,7 +593,7 @@ span.tip { color:#6094ff; }
 /* OPTIONS */
 
 #options {
-	color:white;
+	color:#efc120;
 }
 
 #options h1 {
@@ -601,7 +601,7 @@ span.tip { color:#6094ff; }
 	margin-top:30px;
 	margin-bottom:15px;
 	padding-bottom:5px;
-	border-bottom:1px solid white;
+	border-bottom:1px solid #efc120;
 }
 
 #options h1:first-child {
@@ -613,18 +613,53 @@ span.tip { color:#6094ff; }
 }
 
 #options .form-line {
-	margin-left:15px;
+	margin-left:20px;
+}
+
+#options input[type=checkbox]:before {
+	position:relative;
+	display:block;
+	top:-2px;
+	width:13px;
+	height:13px;
+	padding:2px;
+	background-color:#202;
+	border:1px solid #efc120;
+	color:#efc120;
+	text-align:center;
+	line-height:12px;
+	content:" ";
+	cursor:pointer;
+}
+
+#options input[type=checkbox]:checked:before {
+	content:"\2713";
 }
 
 #options label {
+	margin-left:12px;
 	cursor:pointer;
 }
 
 #options label:hover {
-	color:#ccc;
+	color:white;
+}
+
+#options label span {
+	color:#8b7115;
+	font-size:12px;
+	font-style:italic;
 }
 
 #options input[type=button] {
-	padding:3px 10px;
+	padding:4px 12px;
+	background-color:#202;
+	border:1px solid #efc120;
 	cursor:pointer;
+	color:#efc120;
+	font-size:14px;
+}
+
+#options input[type=button]:hover {
+	border:1px solid white;
 }

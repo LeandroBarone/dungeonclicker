@@ -46,6 +46,6 @@ function updateOptions() {
 }
 
 function showOptionsPanel() {
-	$("#bg-texture").css("background-color", "rgb(125, 168, 47)");
+	$("#bg-texture").css("background-color", "#313");
 	$("#options").mCustomScrollbar("update");
 }
