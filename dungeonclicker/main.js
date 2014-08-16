@@ -31,9 +31,9 @@ var dC = new Object();
 
 // Game info
 var dCi = new Object();
-dCi["version"] = "8";
-dCi["updated"] = "Aug 12, 2014";
-dCi["changes"] = "First public release. Full screen enabled. Philosophic Mercury and Philosopher's Stone fixed.";
+dCi["version"] = "9";
+dCi["updated"] = "Aug 16, 2014";
+dCi["changes"] = "";
 dCi["quote"] = "\"Immortality is a long shot, I admit. But somebody has to be first\".<br />&mdash; Bill Cosby";
 dC["v"] = dCi["version"]; // Game version
 
@@ -77,10 +77,21 @@ $(function() {
 	// Load settings
 	var dCc = $.jStorage.get("dC", "undefined");
 	if (dCc != "undefined") {
+		
+		if (dCc["v"] <= 7) {
+			if (typeof dCc["options"]["RotateAdventureLight"] == "undefined") dCc["options"]["RotateAdventureLight"] = true;
+			if (typeof dCc["options"]["ShowAdventureLight"] == "undefined") dCc["options"]["ShowAdventureLight"] = true;
+			if (typeof dCc["options"]["ShowTransitions"] == "undefined") dCc["options"]["ShowTransitions"] = true;
+		}
+
+		if (dCc["v"] == 8) {
+		}
+		
+		if (dCc["v"] < dCi["version"]) {
+			dCc["v"] = dCi["version"];
+		}
+		
 		dC = dCc;
-		if (typeof dC["options"]["RotateAdventureLight"] == "undefined") dC["options"]["RotateAdventureLight"] = true;
-		if (typeof dC["options"]["ShowAdventureLight"] == "undefined") dC["options"]["ShowAdventureLight"] = true;
-		if (typeof dC["options"]["ShowTransitions"] == "undefined") dC["options"]["ShowTransitions"] = true;
 	}
 	
 	// Save settings each 30 secs
@@ -140,8 +151,14 @@ $(function() {
 		
 		// DC frames
 		var bW = w - 30;
-		var bT = $("#coin-gui").position().top + $("#coin-gui").outerHeight() + $("#unlock-gui").outerHeight() + 15;
-		var bH = h - ($("#log-gui").outerHeight() + $("#coin-gui").position().top + $("#coin-gui").outerHeight() + $("#unlock-gui").outerHeight() + 40);
+		if (unlockPanelIsHidden) {
+			var bT = $("#coin-gui").position().top + $("#coin-gui").outerHeight() + $("#income-gui").outerHeight() + 15;
+			var bH = h - ($("#log-gui").outerHeight() + $("#coin-gui").position().top + $("#coin-gui").outerHeight() + $("#income-gui").outerHeight() + 40);
+		}
+		else {
+			var bT = $("#coin-gui").position().top + $("#coin-gui").outerHeight() + $("#unlock-gui").outerHeight() + 15;
+			var bH = h - ($("#log-gui").outerHeight() + $("#coin-gui").position().top + $("#coin-gui").outerHeight() + $("#unlock-gui").outerHeight() + 40);
+		}
 		var bbW = Math.floor((bW - 30) / 2 - 20);
 		$(".dcframe").width(bW);
 		$(".dcframe").height(bH);
@@ -188,10 +205,13 @@ function reconfigureGoldGUI() {
 	
 	// GUI position
 	var gT = 15;
-	if ($("#menu").width() > wWidth - ($("#coin-quantity").outerWidth() + parseInt($("#coin-gui").css("padding-left")) + 45)) {
+	var iT = 45;
+	if (wWidth > 0 && $("#menu").width() > wWidth - ($("#coin-quantity").outerWidth() + parseInt($("#coin-gui").css("padding-left")) + 45)) {
 		gT += 32; // Menu height
+		iT -= 20;
 	}
 	$("#coin-gui").css("top", gT);
+	$("#income-gui").css("top", iT);
 }
 
 function changePanel(panel) {
@@ -244,6 +264,7 @@ function updateCoin() {
 	}
 	else {
 		$("#coin-quantity").html(coin.addCommas());
+		
 	}
 }
 
@@ -274,6 +295,8 @@ function setTitle() {
 }
 
 function unlockPanels() {
+	if (unlockPanelIsHidden) return;
+	
 	for (var key in dCi["panels"]) {
 		if (dC["panels"][key] == true) continue;
 		
@@ -300,7 +323,6 @@ function unlockPanels() {
 		console.log(label);
 		unlockPanelIsHidden = true;
 		$("#unlock-gui").remove();
-		$(window).resize();
 	}
 	else {
 		$("#unlock-gui").html(label);
@@ -318,9 +340,9 @@ function updateIncome() {
 		}
 	}
 	
-	if (hasBuff("Alchemist's Kit")) income = addNumbers(income, 100);
-	if (hasBuff("Philosophic Mercury")) income = addNumbers(income, 100000);
-	if (hasBuff("Philosopher's Stone")) income = addNumbers(income, 100000000);
+	if (hasBuff("Alchemist's Kit")) income = addNumbers(income, 33);
+	if (hasBuff("Philosophic Mercury")) income = addNumbers(income, 33333);
+	if (hasBuff("Philosopher's Stone")) income = addNumbers(income, 33333333);
 	
 	if (income == "") return;
 	
@@ -336,21 +358,29 @@ function updateIncome() {
 	else {
 		incomeIsBig = true;
 	}
+	
+	if (income.toString().length > 50) {
+		$("#income-gui").html("Income: <span class='coin'>10<sup>" + (income.length - 1) + "</sup></span><span class='symbol'>g</span>");
+	}
+	else {
+		$("#income-gui").html("Income: <span class='coin'>" + income.addCommas() + "</span><span class='symbol'>g</span>");
+	}
 }
 
 function updateIncomeMultiplier() {
 	incomeMultiplier = 1;
-	if (hasBuff("Talon of the Harpy")) incomeMultiplier += 0.1;
-	if (hasBuff("Eye of the Cockatrice")) incomeMultiplier += 0.2;
-	if (hasBuff("Sting of the Wyvern")) incomeMultiplier += 0.3;
-	if (hasBuff("Claw of the Sphynx")) incomeMultiplier += 0.4;
-	if (hasBuff("Left Horn of Mammorus")) incomeMultiplier += 0.5;
-	if (hasBuff("Right Horn of Mammorus")) incomeMultiplier += 0.5;
-	if (hasBuff("Scale of the Drake")) incomeMultiplier += 0.6;
-	if (hasBuff("Spike of the Basilisk")) incomeMultiplier += 0.7;
-	if (hasBuff("Tooth of the Manticore")) incomeMultiplier += 0.8;
-	if (hasBuff("Heart of the Kraken")) incomeMultiplier += 0.9;
-	if (hasBuff("Tusk of the Tarrasque")) incomeMultiplier += 1;
+	if (hasBuff("Talon of the Harpy")) incomeMultiplier += 0.01;
+	if (hasBuff("Eye of the Cockatrice")) incomeMultiplier += 0.02;
+	if (hasBuff("Sting of the Wyvern")) incomeMultiplier += 0.03;
+	if (hasBuff("Claw of the Sphynx")) incomeMultiplier += 0.04;
+	if (hasBuff("Left Horn of Mammorus")) incomeMultiplier += 0.05;
+	if (hasBuff("Right Horn of Mammorus")) incomeMultiplier += 0.05;
+	if (hasBuff("Scale of the Drake")) incomeMultiplier += 0.06;
+	if (hasBuff("Spike of the Basilisk")) incomeMultiplier += 0.07;
+	if (hasBuff("Tooth of the Manticore")) incomeMultiplier += 0.08;
+	if (hasBuff("Heart of the Kraken")) incomeMultiplier += 0.09;
+	if (hasBuff("Left Tusk of the Tarrasque")) incomeMultiplier += 0.1;
+	if (hasBuff("Right Tusk of the Tarrasque")) incomeMultiplier += 0.1;
 	if (hasBuff("Ring of Luck")) incomeMultiplier += 1;
 }
 

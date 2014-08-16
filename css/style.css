@@ -143,7 +143,7 @@ span.tip { color:#6094ff; }
 #coin-gui {
 	position:absolute;
 	left:15px;
-	top:10px;
+	top:15px;
 	background-image:url(../img/coin-icon.png);
 	background-position:0px 5px;
 	background-repeat:no-repeat;
@@ -181,7 +181,7 @@ span.tip { color:#6094ff; }
 
 #unlock-gui {
 	position:absolute;
-	left:15px;
+	right:15px;
 	top:45px;
 	padding:5px 0px;
 	color:#ccc;
@@ -189,8 +189,22 @@ span.tip { color:#6094ff; }
 }
 
 #unlock-gui .panel-name { color:white; }
-#unlock-gui .symbol { color:#8b7115; }
-#unlock-gui .coin { color:#efc120 }
+
+/* INCOME GUI */
+
+#income-gui {
+	position:absolute;
+	left:15px;
+	top:45px;
+	padding:5px 0px;
+	color:#ccc;
+	font-size:10px;
+}
+
+#income-gui sup {
+	vertical-align:super;
+	font-size:90%;
+}
 
 /* LOG GUI */
 
@@ -634,6 +648,10 @@ span.tip { color:#6094ff; }
 
 #options input[type=checkbox]:checked:before {
 	content:"\2713";
+}
+
+#options input[type=checkbox]:hover:before {
+	border:1px solid white;
 }
 
 #options label {

@@ -1,13 +1,6 @@
 $(function() {
 	$("#coin-gui").hover(function() {
-		updateIncome();
 		var tooltip = "<h1>Coin</h1><p>Use it to purchase and upgrade stuff.</p>";
-		if (income > 0) {
-			tooltip += "<p>Income: <span class='coin'>" + income.addCommas() + "<span class='symbol'>g</span></span> per second</p>";
-		}
-		if (incomeMultiplier > 1) {
-			tooltip += "<p>Income multiplier: <span class='coin'>x" + incomeMultiplier + "</span></p>";
-		}
 		if (dC.coin.length > 15) {
 			tooltip += "<p>Magnitude: <span class='coin'>10<sup>" + (dC.coin.length - 1) + "</sup><span class='symbol'>g</span></span></p>";
 			tooltip += "<p>Coin: <span class='coin'>" + dC["coin"].addCommas() + "<span class='symbol'>g</span></span></p>";
@@ -18,6 +11,21 @@ $(function() {
 	});
 	
 	$("#unlock-gui").hover(function() { showTooltip("<h1>Unlock features</h1><p>Acquire this amount of coin to unlock the next feature. This doesn't expend the money!</p>"); }, function() { hideTooltip(); });
+	
+	$("#income-gui").hover(function() {
+		updateIncome();
+		var tooltip = "<h1>Income</h1><p>You earn this much coin every second.</p>";
+		if (incomeMultiplier > 1) {
+			tooltip += "<p>Income multiplier: <span class='coin'>x" + incomeMultiplier + "</span></p>";
+		}
+		if (incomeIsBig) {
+			tooltip += "<p>Magnitude: <span class='coin'>10<sup>" + (income.length - 1) + "</sup><span class='symbol'>g</span></span></p>";
+			tooltip += "<p>Coin: <span class='coin'>" + income.addCommas() + "<span class='symbol'>g</span></span></p>";
+		}
+		showTooltip(tooltip);
+	}, function() {
+		hideTooltip();
+	});
 	
 	$("#menu .button").hover(function() {
 		var key = $(this).attr("data-key");

@@ -38,20 +38,20 @@ function updateAdventureMultiplier() {
 	if (hasBuff("Coin Charm")) adventureBonusCoin += 1;
 	if (hasBuff("Golden Rose Clover")) adventureBonusCoin += 5;
 
-	if (hasBuff("Brooch of the Prosperous Adventurer")) adventureMultiplier += 0.1;
-	if (hasBuff("Pendant of the Prosperous Adventurer")) adventureMultiplier += 0.2;
-	if (hasBuff("Necklace of the Prosperous Adventurer")) adventureMultiplier += 0.3;
-	if (hasBuff("Gloves of the Prosperous Adventurer")) adventureMultiplier += 0.4;
-	if (hasBuff("Cape of the Prosperous Adventurer")) adventureMultiplier += 0.5;
+	if (hasBuff("Brooch of the Prosperous Adventurer")) adventureMultiplier += 0.05;
+	if (hasBuff("Pendant of the Prosperous Adventurer")) adventureMultiplier += 0.1;
+	if (hasBuff("Necklace of the Prosperous Adventurer")) adventureMultiplier += 0.15;
+	if (hasBuff("Gloves of the Prosperous Adventurer")) adventureMultiplier += 0.2;
+	if (hasBuff("Cape of the Prosperous Adventurer")) adventureMultiplier += 0.25;
 }
 
 function adventure() {
 	var coin = randomBetween(1, 3) + adventureBonusCoin;
 	
-	if (hasBuff("Verdant Bead of the Windwalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.02)), Math.ceil(multiplyNumbers(income, 0.03)));
-	if (hasBuff("Amber Bead of the Sandwalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.02)), Math.ceil(multiplyNumbers(income, 0.03)));
-	if (hasBuff("Crimson Bead of the Flamewalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.03)), Math.ceil(multiplyNumbers(income, 0.045)));
-	if (hasBuff("Azure Bead of the Rainwalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.03)), Math.ceil(multiplyNumbers(income, 0.045)));
+	if (hasBuff("Verdant Bead of the Windwalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.005)), Math.ceil(multiplyNumbers(income, 0.01)));
+	if (hasBuff("Amber Bead of the Sandwalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.005)), Math.ceil(multiplyNumbers(income, 0.01)));
+	if (hasBuff("Crimson Bead of the Flamewalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.01)), Math.ceil(multiplyNumbers(income, 0.025)));
+	if (hasBuff("Azure Bead of the Rainwalker")) coin += randomBetween(Math.ceil(multiplyNumbers(income, 0.01)), Math.ceil(multiplyNumbers(income, 0.025)));
 	
 	if (adventureMultiplier > 1) coin = Math.ceil(multiplyNumbers(coin, adventureMultiplier));
 	

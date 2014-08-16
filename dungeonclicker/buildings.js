@@ -1,10 +1,10 @@
 dCi["buildings"] = new Object();
-dCi["buildings"]["Tavern"] =				{"income":"1",				"basePrice":"100",			"quote":"quote"};
-dCi["buildings"]["Orchard"] =				{"income":"2",				"basePrice":"430",			"quote":"quote"};
-dCi["buildings"]["Butcher shop"] =	 		{"income":"5",				"basePrice":"1060",			"quote":"quote"};
-dCi["buildings"]["Farm"] =	 			{"income":"10",				"basePrice":"2080",			"quote":"quote"};
-dCi["buildings"]["Granite quarry"] =			{"income":"50",				"basePrice":"11800",			"quote":"quote"};
-dCi["buildings"]["Vineyard"] =	 			{"income":"100",			"basePrice":"22030",			"quote":"quote"};
+dCi["buildings"]["Tavern"] =				{"income":"1",				"basePrice":"100",			"quote":"Adventurers meet here, so glasses, plates and furniture are disposable."};
+dCi["buildings"]["Orchard"] =				{"income":"2",				"basePrice":"430",			"quote":"A garden filled with beautiful trees and even more beautiful dryads."};
+dCi["buildings"]["Butcher shop"] =	 		{"income":"5",				"basePrice":"1060",			"quote":"&laquo;Meat so fresh it still moans-- I mean, mooes!&raquo;<br />&ndash; Khar, local butcher"};
+dCi["buildings"]["Farm"] =	 			{"income":"10",				"basePrice":"2080",			"quote":"It is said that some of the sheep are in fact people, who were victim of failed polimorphing attempts. Wizards, local authorities and the sheep deny this."};
+dCi["buildings"]["Granite quarry"] =			{"income":"50",				"basePrice":"11800",			"quote":"&laquo;I bet I can break a granite block with my head.&raquo;<br />&ndash; Last words of dwarven prince Vorfin"};
+dCi["buildings"]["Vineyard"] =	 			{"income":"100",			"basePrice":"22030",			"quote":"&laquo;Let me tell you, our wine is the best you have tasted. Here, take a sip. Don't be shy.&raquo;<br />&ndash; Lord Angus, vineyard owner, to himself"};
 dCi["buildings"]["Inn"] =	 			{"income":"500",			"basePrice":"119400",			"quote":"quote"};
 dCi["buildings"]["Copper mine"] =			{"income":"1000",			"basePrice":"282880",			"quote":"quote"};
 dCi["buildings"]["Archery range"] =			{"income":"5000",			"basePrice":"1076800",			"quote":"quote"};
@@ -127,7 +127,7 @@ function updateBuildingsStatus() {
 }
 
 function updateBuildingsNotificationStatus() {
-	if (dC["coin"].toString().length > 9) {
+	if (dC["coin"].toString().length > 15) {
 		$("#btnMenuBuildings .notification").hide();
 		return;
 	}
@@ -159,5 +159,5 @@ function updateBuildings() {
 function calculateBuildingPrice(b, q) {
 	var p = dCi["buildings"][b]["basePrice"];
 	if (q > 5000) q = 5000;
-	return multiplyNumbers(p, Math.pow(1.15, q)).toString();
+	return multiplyNumbers(p, Math.pow(1.2, q)).toString();
 }
