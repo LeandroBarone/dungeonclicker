@@ -33,7 +33,7 @@ var dC = new Object();
 var dCi = new Object();
 dCi["version"] = "9";
 dCi["updated"] = "Aug 16, 2014";
-dCi["changes"] = "";
+dCi["changes"] = "Complete rebalance, income GUI. Please restart your game.";
 dCi["quote"] = "\"Immortality is a long shot, I admit. But somebody has to be first\".<br />&mdash; Bill Cosby";
 dC["v"] = dCi["version"]; // Game version
 
