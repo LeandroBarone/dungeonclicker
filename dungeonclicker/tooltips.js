@@ -41,20 +41,20 @@ $(function() {
 		var extraMultiplierB = 0;
 		
 		if (hasBuff("Verdant Bead of the Windwalker")) {
-			extraMultiplierA += 2;
-			extraMultiplierB += 3;
+			extraMultiplierA += 0.5;
+			extraMultiplierB += 1;
 		}
 		if (hasBuff("Amber Bead of the Sandwalker")) {
-			extraMultiplierA += 2;
-			extraMultiplierB += 3;
+			extraMultiplierA += 0.5;
+			extraMultiplierB += 1;
 		}
 		if (hasBuff("Crimson Bead of the Flamewalker")) {
-			extraMultiplierA += 3;
-			extraMultiplierB += 4.5;
+			extraMultiplierA += 1;
+			extraMultiplierB += 2.5;
 		}
 		if (hasBuff("Azure Bead of the Rainwalker")) {
-			extraMultiplierA += 3;
-			extraMultiplierB += 4.5;
+			extraMultiplierA += 1;
+			extraMultiplierB += 2.5;
 		}
 		
 		if (adventureBonusCoin > 0 || extraMultiplierA > 0) {
